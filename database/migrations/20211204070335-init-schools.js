@@ -21,8 +21,8 @@ module.exports = {
       updated_at: DATE,
     });
   },
-
-  down: async (queryInterface, Sequelize) => {
+  // Sequelize
+  down: async (queryInterface) => {
     /**
      * Add reverting commands here.
      *

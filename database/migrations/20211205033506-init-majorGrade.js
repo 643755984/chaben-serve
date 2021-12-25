@@ -8,7 +8,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     const { INTEGER, DATE, STRING } = Sequelize;
+     const { INTEGER, DATE } = Sequelize;
      await queryInterface.createTable('major_grade', {
        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
        major_id: { type: INTEGER, allowNull: false },
@@ -22,7 +22,7 @@ module.exports = {
      });
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     /**
      * Add reverting commands here.
      *
