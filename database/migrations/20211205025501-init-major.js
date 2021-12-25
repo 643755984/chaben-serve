@@ -11,8 +11,8 @@ module.exports = {
      const { INTEGER, DATE, STRING } = Sequelize;
      await queryInterface.createTable('major', {
        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-       major_name: STRING(20),
-       major_type: INTEGER,
+       major_name: { type: STRING(20), allowNull: false },
+       major_type: { type: INTEGER, allowNull: false },
        created_at: DATE,
        updated_at: DATE,
      });

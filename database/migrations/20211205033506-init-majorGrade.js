@@ -11,7 +11,7 @@ module.exports = {
      const { INTEGER, DATE, STRING } = Sequelize;
      await queryInterface.createTable('major_grade', {
        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-       major_id: INTEGER,
+       major_id: { type: INTEGER, allowNull: false },
        min_grade: INTEGER,
        average_grade: INTEGER,
        pass_grade: INTEGER,

@@ -10,10 +10,10 @@ module.exports = {
      */
     const { INTEGER, DATE, STRING } = Sequelize;
     await queryInterface.createTable('schools', {
-      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      school_name: STRING(30),
-      school_type: INTEGER,
-      school_level: INTEGER,
+      school_id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      school_name: { type: STRING(30), allowNull: false },
+      school_type: { type: INTEGER, allowNull: false },
+      school_level: { type: INTEGER, allowNull: false },
       school_logo: STRING(60),
       school_email: STRING(20),
       school_address: STRING(60),
