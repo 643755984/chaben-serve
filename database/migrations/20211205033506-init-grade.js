@@ -8,13 +8,14 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     const { INTEGER, DATE } = Sequelize;
-     await queryInterface.createTable('major_grade', {
+     const { INTEGER, DATE, FLOAT } = Sequelize;
+     await queryInterface.createTable('grade', {
        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+       school_id: { type: INTEGER, allowNull: false },
        major_id: { type: INTEGER, allowNull: false },
-       min_grade: INTEGER,
-       average_grade: INTEGER,
-       pass_grade: INTEGER,
+       min_grade: FLOAT,
+       average_grade: FLOAT,
+       pass_grade: FLOAT,
        recruit_number_people: INTEGER,
        admit_number_people: INTEGER,
        created_at: DATE,
@@ -29,6 +30,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.dropTable('major_grade');
+     await queryInterface.dropTable('grade');
   }
 };

@@ -9,7 +9,9 @@ class SchoolController extends Controller {
             schoolName: {type: 'string', required: true, desc: 'schoolName'},
             schoolLevel: {type: 'int', required: true, desc: 'schoolLevel'},
             schoolType: {type: 'int', required: true, desc: 'schoolType'},
-            schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'}
+            schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'},
+            schoolEmail: {type: 'string', required: false, desc: 'schoolEmail'},
+            schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'}
         });
         const { schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress } = ctx.request.body
         let result = await service.schoolService.create({ schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress});
@@ -23,7 +25,9 @@ class SchoolController extends Controller {
             schoolName: {type: 'string', required: true, desc: 'schoolName'},
             schoolLevel: {type: 'int', required: true, desc: 'schoolLevel'},
             schoolType: {type: 'int', required: true, desc: 'schoolType'},
-            schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'}
+            schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'},
+            schoolEmail: {type: 'string', required: false, desc: 'schoolEmail'},
+            schoolAddress: {type: 'string', required: false, desc: 'schoolEmail'}
         });
         const id = ctx.params.id
         const { schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress } = ctx.request.body

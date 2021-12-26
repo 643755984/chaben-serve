@@ -6,11 +6,10 @@ class MajorController extends Controller {
     async create() {
         const { ctx, service }  = this;
         ctx.validate({
-            majorName: {type: 'string', required: true, desc: 'schoolName'},
-            majorType: {type: 'int', required: true, desc: 'schoolType'}
+            majorName: {type: 'string', required: true, desc: 'majorName'},
+            majorType: {type: 'int', required: true, desc: 'majorType'}
         });
         const { majorName, majorType } = ctx.request.body
-        console.log('1--------', service.MajorService)
         let result = await service.majorService.create({ majorName, majorType });
         ctx.addSuccess(result)
     }
@@ -19,8 +18,8 @@ class MajorController extends Controller {
         const { ctx, service }  = this;
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'},
-            majorName: {type: 'string', required: true, desc: 'schoolName'},
-            majorType: {type: 'int', required: true, desc: 'schoolType'}
+            majorName: {type: 'string', required: true, desc: 'majorName'},
+            majorType: {type: 'int', required: true, desc: 'majorType'}
         });
         const id = ctx.params.id
         const { majorName, majorType } = ctx.request.body

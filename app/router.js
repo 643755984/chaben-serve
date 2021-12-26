@@ -12,4 +12,8 @@ module.exports = app => {
   router.get(`${baseUrl}/school/list`, controller.schoolController.list)
 
   router.resources('major', `${baseUrl}/major`, controller.majorController)
+
+  router.resources('addMajor', `${baseUrl}/school/major`, controller.schoolMajorRelationController)
+
+  router.resources('addGrade', `${baseUrl}/school/grade`, controller.gradeController)
 };
