@@ -4,15 +4,15 @@ module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
   const SchoolModel = app.model.define('schools', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      schoolName: STRING(30),
-      schoolType: INTEGER,
-      schoolLevel: INTEGER,
+      schoolId: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      schoolName: { type: STRING(30), allowNull: false },
+      schoolType: { type: INTEGER, allowNull: false },
+      schoolLevel: { type: INTEGER, allowNull: false },
       schoolLogo: STRING(60),
       schoolEmail: STRING(20),
       schoolAddress: STRING(60),
-      created_at: DATE,
-      updated_at: DATE,
+      createdAt: DATE,
+      updatedAt: DATE,
   });
 
   return SchoolModel;

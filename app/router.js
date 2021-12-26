@@ -5,8 +5,11 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
   // router.post('/api/v1/school/create', controller.schoolController.create)
   let baseUrl = '/api/v1'
   router.resources('schools', `${baseUrl}/school`, controller.schoolController)
+  router.get(`${baseUrl}/school/search`, controller.schoolController.search)
+  router.get(`${baseUrl}/school/list`, controller.schoolController.list)
+
+  router.resources('major', `${baseUrl}/major`, controller.majorController)
 };

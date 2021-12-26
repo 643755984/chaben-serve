@@ -18,7 +18,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1638586937008_2521';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'error'];
 
   // add your user config here
   const userConfig = {
@@ -47,6 +47,11 @@ module.exports = appInfo => {
       enable: false
     }
   }
+
+  config.valparams = {
+    locale: 'zh-cn',
+    throwError: true
+  };
 
   return {
     ...config,

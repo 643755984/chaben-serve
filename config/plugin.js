@@ -1,5 +1,5 @@
 'use strict';
-
+const path = require('path');
 /** @type Egg.EggPlugin */
 module.exports = {
   // had enabled by egg
@@ -13,5 +13,9 @@ module.exports = {
   cors: {
     enable: true,
     package: 'egg-cors'
+  },
+  valparams: {
+    enable: true,
+    package: 'egg-valparams'
   }
 };
