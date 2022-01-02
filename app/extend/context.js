@@ -10,6 +10,9 @@ module.exports = {
     },
     updateSuccess(data) {
         this.body = R.getUpdateSuccessBody(data)
+    },
+    customSuccess(msg, url) {
+        this.body = getSuccessBody(msg, url)
     }
 }
 

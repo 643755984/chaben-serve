@@ -16,4 +16,6 @@ module.exports = app => {
   router.resources('addMajor', `${baseUrl}/school/major`, controller.schoolMajorRelationController)
 
   router.resources('addGrade', `${baseUrl}/school/grade`, controller.gradeController)
+
+  router.post(`${baseUrl}/common/upload`, controller.commonController.upload)
 };
