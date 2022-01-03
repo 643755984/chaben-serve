@@ -1,8 +1,8 @@
 /* eslint valid-jsdoc: "off" */
-
 'use strict';
 
 const { security } = require("./plugin");
+const path = require('path')
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -23,6 +23,7 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    logoDirPath:  path.join(__dirname, '../app/public/logo/')
   };
 
   config.sequelize = {

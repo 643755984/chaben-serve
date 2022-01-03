@@ -57,6 +57,7 @@ class SchoolController extends Controller {
 
     async list() {
         const { ctx, service }  = this;
+        
         ctx.validate({
             pageNum: {type: 'int', required: true, desc: 'pageNum'},
             pageSize: {type: 'int', required: true, desc: 'pageSize'}
