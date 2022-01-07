@@ -27,11 +27,13 @@ class SchoolService extends Service {
         return user;
     }
 
-    async list(pageNum = 1, pageSize = 10) {
+    async list(pageNum = 1, pageSize = 10, condition = {}) {
         let offset = pageSize * (pageNum - 1)
+
         return await this.ctx.model.SchoolModel.findAndCountAll({
             offset,
-            limit: pageSize * 1
+            limit: pageSize * 1,
+            where: condition
         })
     }
 }

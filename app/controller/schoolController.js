@@ -60,10 +60,11 @@ class SchoolController extends Controller {
         
         ctx.validate({
             pageNum: {type: 'int', required: true, desc: 'pageNum'},
-            pageSize: {type: 'int', required: true, desc: 'pageSize'}
+            pageSize: {type: 'int', required: true, desc: 'pageSize'},
+            schoolName: { type: 'string', required: false, desc: 'schoolName' }
         });
-        const { pageNum, pageSize } = ctx.request.query
-        let result = await service.schoolService.list(pageNum, pageSize)
+        const { pageNum, pageSize, ...schoolName } = ctx.request.query
+        let result = await service.schoolService.list(pageNum, pageSize, schoolName)
         ctx.listSuccess(result)
     }
 }

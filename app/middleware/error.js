@@ -10,7 +10,7 @@ module.exports = () => {
             ctx.body = {
               code: 201,
               msg: 'fail',
-              data: error.errors,
+              data: error.errors[0].err[0],
             };
         }else {
              // 同一异常返回
