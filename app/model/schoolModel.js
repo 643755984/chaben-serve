@@ -15,5 +15,7 @@ module.exports = app => {
       updatedAt: DATE,
   });
 
+  // this.hasOne(app.model.)
+
   return SchoolModel;
 };

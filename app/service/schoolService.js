@@ -29,11 +29,19 @@ class SchoolService extends Service {
 
     async list(pageNum = 1, pageSize = 10, condition = {}) {
         let offset = pageSize * (pageNum - 1)
-
         return await this.ctx.model.SchoolModel.findAndCountAll({
             offset,
             limit: pageSize * 1,
             where: condition
+        })
+    }
+
+    async show(schoolId) {
+
+        return await this.ctx.model.SchoolModel.findOne({
+            where: {
+                schoolId
+            }
         })
     }
 }

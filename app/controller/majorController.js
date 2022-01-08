@@ -36,6 +36,19 @@ class MajorController extends Controller {
         const result = await service.majorService.delete(id)
         ctx.deleteSuccess(result)
     }
+
+    async index() {
+        const { ctx, service }  = this;
+        ctx.validate({
+            pageNum: {type: 'int', required: true, desc: 'pageNum'},
+            pageSize: {type: 'int', required: true, desc: 'pageSize'},
+            majorName: { type: 'string', required: false, desc: 'majorName' },
+            majorType: { type: 'int', required: false, desc: 'majorType' }
+        });
+        const { pageNum, pageSize, ...majorName } = ctx.request.query
+        let result = await service.majorService.list(pageNum, pageSize, majorName)
+        ctx.listSuccess(result)
+    }
 }
 
 module.exports = MajorController;

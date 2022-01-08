@@ -35,15 +35,15 @@ class SchoolController extends Controller {
         ctx.updateSuccess(result)
     }
 
-    async search() {
-        const { ctx, service }  = this;
-        ctx.validate({
-            schoolName: {type: 'string', required: true, desc: 'schoolName'}
-        });
-        const { schoolName } = ctx.request.query
-        const schoolInfo = await service.schoolService.findName(schoolName)
-        ctx.result = schoolInfo
-    }
+    // async search() {
+    //     const { ctx, service }  = this;
+    //     ctx.validate({
+    //         schoolName: {type: 'string', required: true, desc: 'schoolName'}
+    //     });
+    //     const { schoolName } = ctx.request.query
+    //     const schoolInfo = await service.schoolService.findName(schoolName)
+    //     ctx.listSuccess(schoolInfo)
+    // }
 
     async destroy() {
         const { ctx, service }  = this;
@@ -55,9 +55,8 @@ class SchoolController extends Controller {
         this.ctx.deleteSuccess(result)
     }
 
-    async list() {
+    async index() {
         const { ctx, service }  = this;
-        
         ctx.validate({
             pageNum: {type: 'int', required: true, desc: 'pageNum'},
             pageSize: {type: 'int', required: true, desc: 'pageSize'},
@@ -65,6 +64,16 @@ class SchoolController extends Controller {
         });
         const { pageNum, pageSize, ...schoolName } = ctx.request.query
         let result = await service.schoolService.list(pageNum, pageSize, schoolName)
+        ctx.listSuccess(result)
+    }
+
+    async show() {
+        const { ctx, service }  = this;
+        ctx.validate({
+            id: {type: 'int', required: true, desc: 'id'},
+        });
+        const id = ctx.params.id
+        let result = await service.schoolService.show(id)
         ctx.listSuccess(result)
     }
 }
