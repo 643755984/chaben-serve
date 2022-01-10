@@ -7,10 +7,11 @@ class SchoolMajorRelationController extends Controller {
         const { ctx, service }  = this;
         ctx.validate({
             schoolId: {type: 'int', required: true, desc: 'schoolId'},
-            majorId: {type: 'int', required: true, desc: 'majorId'}
+            majorIds: {type: 'array',required: true, desc: 'majorId'}
         });
-        const { schoolId, majorId } = ctx.request.body
-        let result = await service.schoolMajorRealtionService.create({ schoolId, majorId });
+        
+        const { schoolId, majorIds } = ctx.request.body
+        let result = await service.schoolMajorRealtionService.create(schoolId, majorIds);
         ctx.addSuccess(result)
     }
 
