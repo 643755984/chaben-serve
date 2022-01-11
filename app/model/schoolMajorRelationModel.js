@@ -12,6 +12,11 @@ module.exports = app => {
   },{
       tableName: 'school_major_relation'
   });
+  SchoolMajorRelationModel.associate = function() {
+      // app.model.Blog.belongsTo(app.model.Type, { foreignKey: 'type_id', targetKey: 'id'})
+      app.model.SchoolMajorRelationModel.belongsTo(app.model.MajorModel, { foreignKey: 'majorId', targetKey: 'id', as: 'majorInfo' })
+  }
+  // app.model.SchoolMajorRelationModel.hasOne(app.model.MajorModel,{ foreignKey: 'majorId', sourceKey: 'id', as: 'majorInfo' })
 
   return SchoolMajorRelationModel;
 };

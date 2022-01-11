@@ -27,7 +27,7 @@ class SchoolController extends Controller {
             schoolType: {type: 'int', required: true, desc: 'schoolType'},
             schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'},
             schoolEmail: {type: 'string', required: false, desc: 'schoolEmail'},
-            schoolAddress: {type: 'string', required: false, desc: 'schoolEmail'}
+            schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'}
         });
         const id = ctx.params.id
         const { schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress } = ctx.request.body
@@ -62,12 +62,13 @@ class SchoolController extends Controller {
             pageSize: {type: 'int', required: true, desc: 'pageSize'},
             schoolName: { type: 'string', required: false, desc: 'schoolName' }
         });
-        const { pageNum, pageSize, ...schoolName } = ctx.request.query
-        let result = await service.schoolService.list(pageNum, pageSize, schoolName)
+        const { pageNum, pageSize, ...condition } = ctx.request.query
+        let result = await service.schoolService.list(pageNum, pageSize, condition)
         ctx.listSuccess(result)
     }
 
     async show() {
+        console.log(1111111111111111)
         const { ctx, service }  = this;
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'},

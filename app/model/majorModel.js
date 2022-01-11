@@ -13,5 +13,10 @@ module.exports = app => {
       tableName: 'major'
   });
 
+  // MajorModel.associate = function() {
+  //   // app.model.Blog.belongsTo(app.model.Type, { foreignKey: 'type_id', targetKey: 'id'})
+  //   app.model.MajorModel.belongsTo(app.model.SchoolMajorRelationModel, { foreignKey: 'id', targetKey: 'majorId', as: 'majorInfo' })
+  // }
+
   return MajorModel;
 };
