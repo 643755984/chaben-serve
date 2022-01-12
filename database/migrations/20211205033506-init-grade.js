@@ -8,7 +8,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     const { INTEGER, DATE, FLOAT } = Sequelize;
+     const { INTEGER, DATE, FLOAT, STRING } = Sequelize;
      await queryInterface.createTable('grade', {
        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
        school_id: { type: INTEGER, allowNull: false },
@@ -18,6 +18,7 @@ module.exports = {
        pass_grade: FLOAT,
        recruit_number_people: INTEGER,
        admit_number_people: INTEGER,
+       year: STRING(60),
        created_at: DATE,
        updated_at: DATE,
      });
