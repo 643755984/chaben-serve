@@ -6,7 +6,6 @@ class GradeService extends Service {
     }
 
     async update(id, obj) {
-        console.log('id------->', obj)
         return await this.ctx.model.GradeModel.update(obj, {
             where: {
                 id
@@ -19,6 +18,15 @@ class GradeService extends Service {
             where: {
                 id
             }
+        })
+    }
+
+    async list(condition = {}) {
+        // let offset = pageSize * (pageNum - 1)
+        return await this.ctx.model.GradeModel.findAndCountAll({
+            // offset,
+            // limit: pageSize * 1,
+            where: condition
         })
     }
 }

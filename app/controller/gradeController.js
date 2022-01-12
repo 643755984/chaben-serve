@@ -31,9 +31,9 @@ class GradeController extends Controller {
         });
         const id = ctx.params.id
         const { minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople } = ctx.request.body
-        console.log('minGrade------>', ctx.request.body)
+
         let result = await service.gradeService.update(id, { minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople })
-        console.log('result--->', result)
+
         ctx.updateSuccess(result)
     }
 
@@ -45,6 +45,19 @@ class GradeController extends Controller {
         const id = ctx.params.id
         const result = await service.gradeService.delete(id)
         ctx.deleteSuccess(result)
+    }
+
+    async index() {
+        const { ctx, service }  = this;
+        ctx.validate({
+            // pageNum: {type: 'int', required: true, desc: 'pageNum'},
+            // pageSize: {type: 'int', required: true, desc: 'pageSize'},
+            schoolId: { type: 'int', required: true, desc: 'schoolId' },
+            majorId: { type: 'int', required: true, desc: 'majorId' }
+        });
+        // const { pageNum, pageSize, ...condition } = ctx.request.query
+        let result = await service.gradeService.list(ctx.request.query)
+        ctx.listSuccess(result)
     }
 }
 

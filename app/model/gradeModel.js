@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  const { INTEGER, DATE, FLOAT } = app.Sequelize;
+  const { INTEGER, DATE, FLOAT, STRING } = app.Sequelize;
 
   const GradeModel = app.model.define('grade', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
@@ -12,6 +12,7 @@ module.exports = app => {
       passGrade: FLOAT,
       recruitNumberPeople: INTEGER,
       admitNumberPeople: INTEGER,
+      year: { type: STRING, allowNull: false },
       createdAt: DATE,
       updatedAt: DATE,
   },{
