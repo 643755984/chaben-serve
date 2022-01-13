@@ -37,7 +37,6 @@ class SchoolService extends Service {
     }
 
     async show(schoolId) {
-
         return await this.ctx.model.SchoolModel.findOne({
             where: {
                 schoolId

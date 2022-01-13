@@ -50,13 +50,20 @@ class GradeController extends Controller {
     async index() {
         const { ctx, service }  = this;
         ctx.validate({
-            // pageNum: {type: 'int', required: true, desc: 'pageNum'},
-            // pageSize: {type: 'int', required: true, desc: 'pageSize'},
             schoolId: { type: 'int', required: true, desc: 'schoolId' },
             majorId: { type: 'int', required: true, desc: 'majorId' }
         });
-        // const { pageNum, pageSize, ...condition } = ctx.request.query
         let result = await service.gradeService.list(ctx.request.query)
+        ctx.listSuccess(result)
+    }
+
+    async show() {
+        const { ctx, service }  = this;
+        ctx.validate({
+            id: {type: 'int', required: true, desc: 'id'},
+        });
+        const id = ctx.params.id
+        let result = await service.gradeService.show(id)
         ctx.listSuccess(result)
     }
 }

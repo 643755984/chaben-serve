@@ -15,9 +15,8 @@ class CommonController extends Controller {
 
         fileStream.pipe(upStream)
 
-        ctx.customSuccess('上传成功', `/public/logo/${fileName}`)
+        ctx.customSuccess('上传成功', `/public/${fileName}`)
     }
-
 }
 
 module.exports = CommonController;

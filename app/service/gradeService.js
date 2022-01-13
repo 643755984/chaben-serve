@@ -22,11 +22,16 @@ class GradeService extends Service {
     }
 
     async list(condition = {}) {
-        // let offset = pageSize * (pageNum - 1)
         return await this.ctx.model.GradeModel.findAndCountAll({
-            // offset,
-            // limit: pageSize * 1,
             where: condition
+        })
+    }
+
+    async show(id) {
+        return await this.ctx.model.GradeModel.findOne({
+            where: {
+                id
+            }
         })
     }
 }

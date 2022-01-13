@@ -68,7 +68,6 @@ class SchoolController extends Controller {
     }
 
     async show() {
-        console.log(1111111111111111)
         const { ctx, service }  = this;
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'},

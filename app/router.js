@@ -17,5 +17,10 @@ module.exports = app => {
 
   router.resources('addGrade', `${baseUrl}/schoolgrade`, controller.gradeController)
 
+  router.resources('user', `${baseUrl}/user`, controller.userController)
+
   router.post(`${baseUrl}/common/upload`, controller.commonController.upload)
+
+  router.post(`${baseUrl}/login`, controller.userController.login)
+  router.post(`${baseUrl}/update/password`, controller.userController.updatePassword)
 };
