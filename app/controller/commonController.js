@@ -9,7 +9,7 @@ class CommonController extends Controller {
         const { ctx } = this
         let fileStream = await ctx.getFileStream()
         let fileName = new Date().getTime() + fileStream.filename
-        let filePath = path.join(this.config.logoDirPath + fileName)
+        let filePath = path.join(this.config.imgDirPath + fileName)
 
         const upStream = fs.createWriteStream(filePath)
 

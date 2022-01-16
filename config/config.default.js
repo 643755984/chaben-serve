@@ -23,7 +23,7 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
-    logoDirPath:  path.join(__dirname, '../app/public/logo/')
+    imgDirPath:  path.join(__dirname, '../app/public/')
   };
 
   config.sequelize = {
@@ -39,8 +39,10 @@ module.exports = appInfo => {
     },
   };
 
+  // 配置跨域
   config.cors = {
-    origin: '*'
+    origin: 'http://localhost:3000',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATH'
   }
 
   config.security = {

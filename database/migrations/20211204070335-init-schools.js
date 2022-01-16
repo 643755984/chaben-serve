@@ -14,7 +14,7 @@ module.exports = {
       school_name: { type: STRING(30), allowNull: false },
       school_type: { type: INTEGER, allowNull: false },
       school_level: { type: INTEGER, allowNull: false },
-      school_logo: STRING(60),
+      school_logo: STRING(120),
       school_email: STRING(20),
       school_address: STRING(60),
       created_at: DATE,

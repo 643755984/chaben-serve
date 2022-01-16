@@ -14,7 +14,7 @@ module.exports = {
        username: { type: STRING(30), allowNull: false },
        password: { type: STRING(30), allowNull: false },
        nickname: { type: STRING(30), allowNull: false },
-       headerImg: STRING(100),
+       header_img: STRING(100),
        created_at: DATE,
        updated_at: DATE,
      });
