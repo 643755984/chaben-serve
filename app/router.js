@@ -19,6 +19,8 @@ module.exports = app => {
 
   router.resources('user', `${baseUrl}/user`, controller.userController)
 
+  router.resources('majorType', `${baseUrl}/majortype`, controller.majorTypeController)
+
   router.post(`${baseUrl}/common/upload`, controller.commonController.upload)
 
   router.post(`${baseUrl}/login`, controller.userController.login)

@@ -28,7 +28,13 @@ class SchoolMajorRealtionService extends Service {
             include: [
                 {
                     model: this.app.model.MajorModel,
-                    as: 'majorInfo'
+                    as: 'majorInfo',
+                    include: [
+                        {
+                            model: this.app.model.MajorTypeModel,
+                            as: 'majorTypeInfo'
+                        }
+                    ]
                 }
             ]
         })

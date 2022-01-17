@@ -26,7 +26,13 @@ class MajorService extends Service {
         return await this.ctx.model.MajorModel.findAndCountAll({
             offset,
             limit: pageSize * 1,
-            where: condition
+            where: condition,
+            include: [
+                {
+                    model: this.app.model.MajorTypeModel,
+                    as: 'majorTypeInfo'
+                }
+            ]
         })
     }
 }
