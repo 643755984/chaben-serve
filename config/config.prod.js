@@ -1,8 +1,8 @@
 /* eslint valid-jsdoc: "off" */
 'use strict';
 
-const { security } = require("./plugin");
-const path = require('path')
+// const { security } = require("./plugin");
+const path = require('path');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -18,19 +18,20 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1638586937008_2521';
 
   // add your middleware config here
-  config.middleware = [ 'error'];
+  config.middleware = [ 'error' ];
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
-    imgDirPath:  path.join(__dirname, '../app/public/')
+    imgDirPath: path.join(__dirname, '../app/public/'),
+    baseUrl: '/api/v1',
   };
 
   // 配置跨域
   config.cors = {
     origin: 'http://127.0.0.1:8089',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATH'
-  }
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATH',
+  };
 
   config.sequelize = {
     dialect: 'mysql',
@@ -47,13 +48,13 @@ module.exports = appInfo => {
 
   config.security = {
     csrf: {
-      enable: false
-    }
-  }
+      enable: false,
+    },
+  };
 
   config.valparams = {
     locale: 'zh-cn',
-    throwError: true
+    throwError: true,
   };
 
   return {

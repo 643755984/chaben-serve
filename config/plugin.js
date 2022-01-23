@@ -1,5 +1,4 @@
 'use strict';
-const path = require('path');
 /** @type Egg.EggPlugin */
 module.exports = {
   // had enabled by egg
@@ -8,14 +7,14 @@ module.exports = {
   // }
   sequelize: {
     enable: true,
-    package: 'egg-sequelize'
+    package: 'egg-sequelize',
   },
   cors: {
     enable: true,
-    package: 'egg-cors'
+    package: 'egg-cors',
   },
   valparams: {
     enable: true,
-    package: 'egg-valparams'
-  }
+    package: 'egg-valparams',
+  },
 };

@@ -21,37 +21,27 @@ class SchoolController extends Controller {
     async update() {
         const { ctx, service }  = this;
         ctx.validate({
-            id: {type: 'int', required: true, desc: 'id'},
+            schoolId: {type: 'int', required: true, desc: 'schoolId'},
             schoolName: {type: 'string', required: true, desc: 'schoolName'},
             schoolLevel: {type: 'int', required: true, desc: 'schoolLevel'},
             schoolType: {type: 'int', required: true, desc: 'schoolType'},
             schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'},
             schoolEmail: {type: 'string', required: false, desc: 'schoolEmail'},
             schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'}
-        });
-        const id = ctx.params.id
-        const { schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress } = ctx.request.body
-        let result = await service.schoolService.update(id, { schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress })
+        })
+        const { schoolId, ...schoolInfo } = ctx.request.body
+        let result = await service.schoolService.update(schoolId, schoolInfo)
         ctx.updateSuccess(result)
     }
 
-    // async search() {
-    //     const { ctx, service }  = this;
-    //     ctx.validate({
-    //         schoolName: {type: 'string', required: true, desc: 'schoolName'}
-    //     });
-    //     const { schoolName } = ctx.request.query
-    //     const schoolInfo = await service.schoolService.findName(schoolName)
-    //     ctx.listSuccess(schoolInfo)
-    // }
-
     async destroy() {
-        const { ctx, service }  = this;
+        const { ctx, service }  = this
         ctx.validate({
-            id: {type: 'int', required: true, desc: 'id'}
+            schoolId: {type: 'int', required: true, desc: 'schoolId'}
         });
-        const id = ctx.params.id
-        const result = await service.schoolService.delete(id)
+        
+        const { schoolId } = ctx.request.body
+        const result = await service.schoolService.delete(schoolId)
         this.ctx.deleteSuccess(result)
     }
 
@@ -72,7 +62,7 @@ class SchoolController extends Controller {
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'},
         });
-        const id = ctx.params.id
+        const { id } = ctx.request.query
         let result = await service.schoolService.show(id)
         ctx.listSuccess(result)
     }

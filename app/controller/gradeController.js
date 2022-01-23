@@ -12,10 +12,11 @@ class GradeController extends Controller {
             averageGrade: {type: 'float', required: false, desc: 'averageGrade'},
             passGrade: {type: 'float', required: false, desc: 'passGrade'},
             recruitNumberPeople: {type: 'int', required: false, desc: 'recruitNumberPeople'},
-            admitNumberPeople: {type: 'int', required: false, desc: 'admitNumberPeople'}
+            admitNumberPeople: {type: 'int', required: false, desc: 'admitNumberPeople'},
+            year: {type: 'string', required: true, desc: 'year'}
         });
-        const { schoolId, majorId, minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople } = ctx.request.body
-        let result = await service.gradeService.create({ schoolId, majorId, minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople });
+        const { schoolId, majorId, minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople, year } = ctx.request.body
+        let result = await service.gradeService.create({ schoolId, majorId, minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople, year });
         ctx.addSuccess(result)
     }
 
@@ -29,8 +30,7 @@ class GradeController extends Controller {
             recruitNumberPeople: {type: 'int', required: false, desc: 'recruitNumberPeople'},
             admitNumberPeople: {type: 'int', required: false, desc: 'admitNumberPeople'}
         });
-        const id = ctx.params.id
-        const { minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople } = ctx.request.body
+        const { id, minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople } = ctx.request.body
 
         let result = await service.gradeService.update(id, { minGrade, averageGrade, passGrade, recruitNumberPeople, admitNumberPeople })
 
@@ -42,7 +42,7 @@ class GradeController extends Controller {
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'}
         });
-        const id = ctx.params.id
+        const { id } = ctx.request.body
         const result = await service.gradeService.delete(id)
         ctx.deleteSuccess(result)
     }
@@ -62,7 +62,7 @@ class GradeController extends Controller {
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'},
         });
-        const id = ctx.params.id
+        const { id } = ctx.request.query
         let result = await service.gradeService.show(id)
         ctx.listSuccess(result)
     }

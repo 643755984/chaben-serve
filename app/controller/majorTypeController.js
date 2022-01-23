@@ -18,7 +18,7 @@ class MajorTypeController extends Controller {
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'}
         });
-        const id = ctx.params.id
+        const { id } = ctx.request.body
         const result = await service.majorTypeService.delete(id)
         ctx.deleteSuccess(result)
     }
