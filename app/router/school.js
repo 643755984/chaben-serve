@@ -11,4 +11,6 @@ module.exports = app => {
   router.post(`${baseUrl}/school/delete`, controller.schoolController.destroy)
 
   router.get(`${baseUrl}/school/detail`, controller.schoolController.show)
+
+  router.get(`${baseUrl}/school/search`, controller.schoolController.search)
 };

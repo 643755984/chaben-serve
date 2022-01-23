@@ -57,13 +57,23 @@ class SchoolController extends Controller {
         ctx.listSuccess(result)
     }
 
+    async search() {
+        const { ctx, service }  = this;
+        ctx.validate({
+            schoolName: { type: 'string', required: false, desc: 'schoolName' }
+        });
+        const { schoolName } = ctx.request.query
+        let result = await service.schoolService.show({ schoolName })
+        ctx.listSuccess(result)
+    }
+
     async show() {
         const { ctx, service }  = this;
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'},
         });
         const { id } = ctx.request.query
-        let result = await service.schoolService.show(id)
+        let result = await service.schoolService.show({schoolId: id})
         ctx.listSuccess(result)
     }
 }
