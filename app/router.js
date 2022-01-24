@@ -10,5 +10,6 @@ module.exports = app => {
   require('./router/majorType')(app)
   require('./router/grade')(app)
   require('./router/schoolMajorRelation')(app)
+  require('./router/notice')(app)
   require('./router/common')(app)
 };

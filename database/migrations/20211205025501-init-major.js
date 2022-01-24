@@ -8,23 +8,23 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     const { INTEGER, DATE, STRING } = Sequelize;
-     await queryInterface.createTable('major', {
-       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-       major_name: { type: STRING(20), allowNull: false },
-       major_type: { type: INTEGER, allowNull: false },
-       created_at: DATE,
-       updated_at: DATE,
-     });
+    const { INTEGER, DATE, STRING } = Sequelize;
+    await queryInterface.createTable('major', {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      major_name: { type: STRING(20), allowNull: false },
+      major_type: { type: INTEGER, allowNull: false },
+      created_at: DATE,
+      updated_at: DATE,
+    });
   },
 
-  down: async (queryInterface) => {
+  down: async queryInterface => {
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.dropTable('major');
-  }
+    await queryInterface.dropTable('major');
+  },
 };

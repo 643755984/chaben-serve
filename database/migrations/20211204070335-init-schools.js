@@ -22,13 +22,13 @@ module.exports = {
     });
   },
   // Sequelize
-  down: async (queryInterface) => {
+  down: async queryInterface => {
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.dropTable('schools');
-  }
+    await queryInterface.dropTable('schools');
+  },
 };
