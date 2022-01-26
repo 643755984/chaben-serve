@@ -15,7 +15,7 @@ class NoticeService extends Service {
 
     async list(pageNum = 1, pageSize = 10, condition = {}) {
         let offset = pageSize * (pageNum - 1)
-        return await this.ctx.model.MajorModel.findAndCountAll({
+        return await this.ctx.model.NoticeModel.findAndCountAll({
             offset,
             limit: pageSize * 1,
             where: condition

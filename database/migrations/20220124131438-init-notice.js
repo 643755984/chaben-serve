@@ -11,7 +11,8 @@ module.exports = {
     const { INTEGER, DATE, STRING } = Sequelize;
     await queryInterface.createTable('notice', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      schoolId: { type: INTEGER, allowNull: false },
+      school_id: { type: INTEGER, allowNull: false },
+      title: { type: STRING(100), allowNull: false },
       time: { type: STRING(20), allowNull: false },
       link: { type: STRING(100), allowNull: false },
       created_at: DATE,
