@@ -8,9 +8,12 @@ module.exports = app => {
       schoolName: { type: STRING(30), allowNull: false },
       schoolType: { type: INTEGER, allowNull: false },
       schoolLevel: { type: INTEGER, allowNull: false },
-      schoolLogo: STRING(60),
+      schoolLogo: { type: STRING(60), allowNull: false },
       schoolEmail: STRING(20),
       schoolAddress: STRING(60),
+      schoolWeb: STRING(60),
+      schoolDetailPic: STRING(120),
+      schoolTel: STRING(20),
       createdAt: DATE,
       updatedAt: DATE,
   });

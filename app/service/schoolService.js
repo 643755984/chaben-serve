@@ -1,4 +1,5 @@
 const Service = require('egg').Service;
+const { Op } = require("sequelize");
 
 class SchoolService extends Service {
     async create(obj) {
@@ -39,6 +40,16 @@ class SchoolService extends Service {
     async show(condition) {
         return await this.ctx.model.SchoolModel.findOne({
             where: condition
+        })
+    }
+
+    async findAllForName(name) {
+        return await this.ctx.model.SchoolModel.findAndCountAll({
+            where: {
+                schoolName: {
+                    [Op.like]: `%${name}%`, 
+                }
+            }
         })
     }
 }

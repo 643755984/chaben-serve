@@ -17,6 +17,9 @@ module.exports = {
       school_logo: STRING(120),
       school_email: STRING(20),
       school_address: STRING(60),
+      school_web: STRING(60),
+      school_detail_pic: STRING(120),
+      school_tel: STRING(20),
       created_at: DATE,
       updated_at: DATE,
     });

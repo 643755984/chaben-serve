@@ -63,7 +63,7 @@ class SchoolController extends Controller {
             schoolName: { type: 'string', required: false, desc: 'schoolName' }
         });
         const { schoolName } = ctx.request.query
-        let result = await service.schoolService.show({ schoolName })
+        let result = await service.schoolService.findAllForName(schoolName)
         ctx.listSuccess(result)
     }
 

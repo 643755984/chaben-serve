@@ -20,7 +20,7 @@ class SchoolMajorRelationController extends Controller {
         ctx.validate({
             id: {type: 'int', required: true, desc: 'id'}
         });
-        const id = ctx.params.id
+        const { id } = ctx.request.body
         const result = await service.schoolMajorRealtionService.delete(id)
         ctx.deleteSuccess(result)
     }
