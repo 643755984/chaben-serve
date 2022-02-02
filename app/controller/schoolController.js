@@ -11,7 +11,10 @@ class SchoolController extends Controller {
             schoolType: {type: 'int', required: true, desc: 'schoolType'},
             schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'},
             schoolEmail: {type: 'string', required: false, desc: 'schoolEmail'},
-            schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'}
+            schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'},
+            schoolWeb: {type: 'string', required: false, desc: 'schoolWeb'},
+            schoolDetailPic: {type: 'string', required: false, desc: 'schoolDetailPic'},
+            schoolTel: {type: 'string', required: false, desc: 'schoolTel'}
         });
         const { schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress } = ctx.request.body
         let result = await service.schoolService.create({ schoolName, schoolType, schoolLevel, schoolLogo, schoolEmail, schoolAddress});
@@ -27,7 +30,10 @@ class SchoolController extends Controller {
             schoolType: {type: 'int', required: true, desc: 'schoolType'},
             schoolLogo: {type: 'string', required: true, desc: 'schoolLogo'},
             schoolEmail: {type: 'string', required: false, desc: 'schoolEmail'},
-            schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'}
+            schoolAddress: {type: 'string', required: false, desc: 'schoolAddress'},
+            schoolWeb: {type: 'string', required: false, desc: 'schoolWeb'},
+            schoolDetailPic: {type: 'string', required: false, desc: 'schoolDetailPic'},
+            schoolTel: {type: 'string', required: false, desc: 'schoolTel'}
         })
         const { schoolId, ...schoolInfo } = ctx.request.body
         let result = await service.schoolService.update(schoolId, schoolInfo)
