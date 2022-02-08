@@ -66,10 +66,12 @@ class SchoolController extends Controller {
     async search() {
         const { ctx, service }  = this;
         ctx.validate({
-            schoolName: { type: 'string', required: false, desc: 'schoolName' }
+            schoolName: { type: 'string', required: false, desc: 'schoolName' },
+            pageNum: {type: 'int', required: true, desc: 'pageNum'},
+            pageSize: {type: 'int', required: true, desc: 'pageSize'}
         });
-        const { schoolName } = ctx.request.query
-        let result = await service.schoolService.findAllForName(schoolName)
+        const { schoolName, pageNum, pageSize } = ctx.request.query
+        let result = await service.schoolService.findAllForName(schoolName, pageNum, pageSize)
         ctx.listSuccess(result)
     }
 

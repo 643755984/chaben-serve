@@ -4,18 +4,22 @@ const Controller = require('egg').Controller;
 
 class UserController extends Controller {
     async login() {
-        const { ctx, service }  = this;
+        const { ctx, service, app }  = this
         ctx.validate({
             username: {type: 'string', required: true, desc: 'username'},
             password: {type: 'string', required: true, desc: 'password'}
         });
         const { username, password } = ctx.request.body
-        let result = await service.userService.login({ username, password })
+        const result = await service.userService.login({ username, password })
+
+        const token = setToken(app, result)
+
         if(result){
             ctx.body = {
                 code: 200,
                 msg: '登录成功',
-                data: result
+                // data: result,
+                token: token
             }
         }else {
             ctx.body = {
@@ -59,6 +63,25 @@ class UserController extends Controller {
             ctx.updateSuccess(result)
         }
     }
+
+    async index() {
+        const { ctx, app, service }  = this
+        const token = ctx.request.header.authorization
+        const decode = ctx.app.jwt.verify(token, app.config.jwt.secret)
+
+        const result = await service.userService.show(decode.id)
+        ctx.listSuccess(result)
+    }
+}
+
+function setToken(app, userInfo) {
+    const token = app.jwt.sign({
+        id: userInfo.id,
+        username: userInfo.username,
+        loginTime: new Date()
+    }, app.config.jwt.secret)
+
+    return token
 }
 
 module.exports = UserController;

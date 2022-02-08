@@ -40,6 +40,11 @@ module.exports = appInfo => {
     },
   };
 
+  // 配置token jwt配置项
+  config.jwt = {
+    secret: '123456',
+  };
+
   // 配置跨域
   config.cors = {
     origin: 'http://localhost:3000',

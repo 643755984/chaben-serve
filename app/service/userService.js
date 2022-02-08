@@ -26,7 +26,14 @@ class UserService extends Service {
         }else {
             return false
         }
-        
+    }
+
+    async show(id) {
+        return await this.ctx.model.UserModel.findOne({
+            where: {
+                id
+            }
+        })
     }
 
 }
