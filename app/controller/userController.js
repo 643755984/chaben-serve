@@ -12,13 +12,13 @@ class UserController extends Controller {
         const { username, password } = ctx.request.body
         const result = await service.userService.login({ username, password })
 
-        const token = setToken(app, result)
-
+        
         if(result){
+            const token = setToken(app, result)
+
             ctx.body = {
                 code: 200,
                 msg: '登录成功',
-                // data: result,
                 token: token
             }
         }else {

@@ -33,6 +33,11 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATH',
   };
 
+  // 配置token jwt配置项
+  config.jwt = {
+    secret: 'chaben786',
+  };
+
   config.sequelize = {
     dialect: 'mysql',
     host: '127.0.0.1',

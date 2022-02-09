@@ -12,5 +12,4 @@ module.exports = app => {
 
   router.get(`${baseUrl}/school/detail`, controller.schoolController.show)
 
-  router.get(`${baseUrl}/school/search`, controller.schoolController.search)
 };

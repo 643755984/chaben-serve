@@ -28,7 +28,8 @@ class SchoolService extends Service {
         return user;
     }
 
-    async list(pageNum = 1, pageSize = 10, condition = {}) {
+    async list(options) {
+        const { pageNum, pageSize, ...condition } = options
         let offset = pageSize * (pageNum - 1)
         return await this.ctx.model.SchoolModel.findAndCountAll({
             offset,
@@ -43,25 +44,6 @@ class SchoolService extends Service {
         })
     }
 
-    async findAllForName(name, pageNum, pageSize) {
-        let result = await this.ctx.model.SchoolModel.findAndCountAll({
-            where: {
-                schoolName: {
-                    [Op.like]: `%${name}%`, 
-                }
-            }
-        })
-        if(result.count === 0) {
-            let offset = pageSize * (pageNum - 1)
-            result = await this.ctx.model.SchoolModel.findAndCountAll({
-                offset,
-                limit: pageSize * 1
-            })
-            result.noData = 1
-        }
-        
-        return result
-    }
 }
 
 module.exports = SchoolService;
